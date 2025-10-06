@@ -1,22 +1,27 @@
 package com.lst.user_management.api.controller;
 
-import org.springframework.stereotype.Controller;
+import com.lst.user_management.api.dto.UserDto;
+import com.lst.user_management.api.services.UserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/api/users")
-
+@RequiredArgsConstructor
 public class UserController {
 
-    /* 작성자 : lst
-     * 함수 설명 : users의 모든 데이터를 리턴
-     */
-    @GetMapping("/users")
-    public String listUser() {
+    private final UserService userService;
 
-        return "All users Data";
+    /**
+     * 작성자 : lst  
+     * 함수 설명 : 모든 사용자 조회 (GET /api/users)
+     */
+    @GetMapping
+    public ResponseEntity<List<UserDto>> getAllUsers() {
+        List<UserDto> users = userService.getAllUsers();
+        return ResponseEntity.ok(users); 
     }
 }

@@ -104,3 +104,41 @@ spring.mvc.view.suffix=.jsp
 ./mvnw spring-boot:run
 
 ```
+
+# DB
+```
+postgresql 사용
+
+
+CREATE DATABASE user_management_db;
+CREATE USER lst WITH PASSWORD '1111';
+GRANT ALL PRIVILEGES ON DATABASE user_management_db TO lst;
+
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    user_id VARCHAR(50) NOT NULL,
+    user_pw VARCHAR(100) NOT NULL,
+    user_email VARCHAR(100),
+    phone VARCHAR(20),
+    address TEXT,
+    create_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    update_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+INSERT INTO user_account (user_id, user_pw, user_email, phone, address)
+VALUES
+('user1', 'pass1', 'user1@example.com', '010-1111-1111', 'Seoul'),
+('user2', 'pass2', 'user2@example.com', '010-2222-2222', 'Busan'),
+('user3', 'pass3', 'user3@example.com', '010-3333-3333', 'Daegu'),
+('user4', 'pass4', 'user4@example.com', '010-4444-4444', 'Incheon'),
+('user5', 'pass5', 'user5@example.com', '010-5555-5555', 'Gwangju'),
+('user6', 'pass6', 'user6@example.com', '010-6666-6666', 'Daejeon'),
+('user7', 'pass7', 'user7@example.com', '010-7777-7777', 'Ulsan'),
+('user8', 'pass8', 'user8@example.com', '010-8888-8888', 'Suwon'),
+('user9', 'pass9', 'user9@example.com', '010-9999-9999', 'Jeonju'),
+('user10', 'pass10', 'user10@example.com', '010-1010-1010', 'Changwon');
+
+
+```
